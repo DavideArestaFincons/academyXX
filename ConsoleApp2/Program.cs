@@ -58,6 +58,7 @@ namespace ConsoleApp2
             //biblio.AddNewReview("1984", 3);
             //biblio.AddNewReview("1984", 3);
             //biblio.AddNewReview("La svastica sul sole", 5);
+            biblio.ShowAmount();
 
             biblio.Reserve("1984", "George Orwell", (title) => {
                 Console.WriteLine($"è stato riservato il libro {title}");
