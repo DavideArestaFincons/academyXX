@@ -22,6 +22,12 @@ namespace ConsoleApp2.Biblioteca
                 _books.Add(libro.Title, libro);
         }
 
+        public void ShowAmount()
+        {
+            Console.WriteLine($"Il numero di libri aggiunto è {_books.Count } "); 
+
+        }
+
         public BookState? GetState(string title)
         {
             if (String.IsNullOrEmpty(title))
