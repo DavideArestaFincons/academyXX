@@ -89,11 +89,21 @@ namespace ConsoleApp2
                         ReserveBook(books);
                         break;
                     case '4':
+                        ReleaseBook(biblio);
                         break;
                 }
             }
             while (choice != '5');
 
+        }
+
+        private static void ReleaseBook(BookSharing biblio)
+        {
+            Console.WriteLine("Inserisci nome del libro da restituire:");
+            var book = Console.ReadLine();
+            Console.WriteLine("Inserisci il nome del customer:");
+            var customer = Console.ReadLine();
+            biblio.Release(book, customer);
         }
 
         public static void ReserveBook(BookSharing bookSharing)
