@@ -76,22 +76,14 @@ namespace ConsoleApp2
                 Console.WriteLine("Inserisci un'opzione numerica: ");
                 choice = Console.ReadKey().KeyChar;
 
-                switch(choice)
+                switch (choice)
                 {
                     case '1':
                         break;
                     case '2':
                         break;
                     case '3':
-                        Console.WriteLine("\nInserisci il titolo del libro che vuoi prenotare:");
-                        var bookTitle = Console.ReadLine();
-                        Console.WriteLine("\nInserisci il tuo nome:");
-                        var customerName = Console.ReadLine();
-                        var result = books.InteractiveReserve(bookTitle, customerName);
-                        if (result == true)
-                            Console.WriteLine("La prenotazione è stata effettuata con successo!");
-                        else
-                            Console.WriteLine("La prenotazione è fallita. Riprova!");
+                        ReserveBook(books);
                         break;
                     case '4':
                         break;
@@ -99,6 +91,19 @@ namespace ConsoleApp2
             }
             while (choice != '5');
 
+        }
+
+        public static void ReserveBook(BookSharing bookSharing)
+        {
+            Console.WriteLine("\nInserisci il titolo del libro che vuoi prenotare:");
+            var bookTitle = Console.ReadLine();
+            Console.WriteLine("\nInserisci il tuo nome:");
+            var customerName = Console.ReadLine();
+            var result = bookSharing.InteractiveReserve(bookTitle, customerName);
+            if (result == true)
+                Console.WriteLine("La prenotazione è stata effettuata con successo!");
+            else
+                Console.WriteLine("La prenotazione è fallita. Riprova!");
         }
 
     }
