@@ -6,17 +6,9 @@ using System.Text;
 
 namespace ConsoleApp2
 {
-    /// <summary>
-    /// <seealso cref=""/>
-    /// </summary>
     public class ClassWorkspace
     {
-        //ciao sono un commento
-        /*
-         
-        Ciao sono un commento lungo
-         
-         */
+
         private string _firstName;
 
 

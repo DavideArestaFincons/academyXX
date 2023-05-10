@@ -46,30 +46,12 @@ namespace ConsoleApp2.Biblioteca
             if (String.IsNullOrEmpty(title))
                 throw new ArgumentNullException(nameof(title));
 
-            //for (int i = 0; i < _books.Count; i++)
-            //{
-            //    if (_books[i].Title == title)
-            //    {
-            //        return _books[i].State;
-            //    }
-            //}
-
-            //return null;
-
-            //foreach (var book in _books)
-            //{
-            //    if (book.Title == title)
-            //        return book.State;
-            //}
-
-            //return null;
 
             if (_books.ContainsKey(title))
                 return _books[title].State;
 
             return null;
 
-            //return _books.ContainsKey(title) ? _books[title].State : null;    
         }
 
         public bool Reserve(string title, string customer, Action <string> reserve)
@@ -84,7 +66,6 @@ namespace ConsoleApp2.Biblioteca
                 _books[title].State = BookState.NotAvailable;
                 _books[title].Customer = customer;
                 reserve(title);
-                //OnChangeBookStatus(title, BookState.NotAvailable);
                 return true;
             }
 
@@ -106,7 +87,6 @@ namespace ConsoleApp2.Biblioteca
                     _books[title].State = BookState.Available;
                     _books[title].Customer = null;
                     release(title);
-                    //OnChangeBookStatus(title, BookState.Available); 
                 }
             }
         }

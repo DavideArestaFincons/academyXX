@@ -16,37 +16,6 @@ namespace ConsoleApp2
         static void Main(string[] args)
         {
 
-            //var bike = new  Bike();
-
-            //var t = bike.Type;
-
-            //var speed = bike.Speed;
-            //bike.Accellerate();
-            //speed = bike.Speed;
-            //var age = GetAge();
-
-            //Console.WriteLine($"age: {age.Age}");
-
-            //var esercitazione = File.ReadAllText("C:\\Users\\salvatore.aprile\\Desktop\\Academy 2023\\Slide\\01 - .NET and C# language\\Labs\\Lab02\\Esercitazione2.txt");
-
-            //var person = new Student("Maria");
-
-            ////var t = new Student("Carlo");
-            //var t = 7;
-            //person.Calculate(ref t);
-
-
-            //person.FirstName = "Test";
-
-            //var casted = (IAge)person;
-
-            //casted. = "Test";
-
-            //var t = new ClassWorkspace();
-            //t.OnRun("ss");
-
-            var numero = 3;
-
             var biblio = new BookSharing();
             biblio.ChangeNumOfReviews += Biblio_ChangeReviewStatus;
 
@@ -57,9 +26,6 @@ namespace ConsoleApp2
             biblio.Fill(new Libro("Le barzellette di Cassano", BookState.Available, "Angy", 2));
             biblio.Fill(new Libro("Ragazze elettriche", BookState.Available, "Laura", 4));
 
-            //biblio.AddNewReview("1984", 3);
-            //biblio.AddNewReview("1984", 3);
-            //biblio.AddNewReview("La svastica sul sole", 5);
             biblio.ShowAmount();
 
             biblio.Reserve("1984", "George Orwell", (title) => {
@@ -73,9 +39,10 @@ namespace ConsoleApp2
             biblio.AddTodayDateToBooks();
 
             biblio.ShowReserved();
+
+            Menu();
+
         }
-
-
 
         private static void Biblio_ChangeReviewStatus(object sender, ChangeReviewStatusEventArgs e)
         {
@@ -86,20 +53,24 @@ namespace ConsoleApp2
             Console.Beep();
         }
 
-       
+        public static void Menu()
+        {
+            var choice = 0;
 
-        //biblio.ChangeBookStatus -= Biblio_ChangeBookStatus;
+            do
+            {
+                Console.WriteLine("1. Restituisci i libri in ordine alfabetico");
+                Console.WriteLine("2. Inserisci un nuovo libro");
+                Console.WriteLine("3. Prenota un nuovo libro");
+                Console.WriteLine("4. Restituisci il libro");
+                Console.WriteLine("5. Esci");
 
-        //var biblio = new BookSharingLinq();
+                Console.WriteLine("Inserisci un'opzione numerica: ");
+                choice = Console.ReadKey().KeyChar;
+            }
+            while (choice != '5');
 
-        //biblio.Fill(new Libro("Figth club", BookState.Available, "Giulia",5));
-        //biblio.Fill(new Libro("La fabbrica di cioccolato", BookState.Available, "Laura",4));
-        //biblio.Fill(new Libro("Figth club", BookState.Available, "Mario",2));
-        //biblio.Fill(new Libro("Into the wild", BookState.Available, "Giulia",5));
+        }
 
-        //biblio.PrimaQuery();
-        //biblio.SecondaQuery();
-        //biblio.TerzaQuery();
-        //biblio.Books.
     }
 }

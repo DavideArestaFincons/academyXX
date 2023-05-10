@@ -14,7 +14,6 @@ namespace ConsoleApp2
         public bool HasWheels { get; set; }  
 
         public int NumWheels { get; set; }
-        //public override VehicleType Type => VehicleType.Bike;
 
         public override VehicleType Type
         {
