@@ -81,6 +81,23 @@ namespace ConsoleApp2.Biblioteca
             return false;
         }
 
+        public bool InteractiveReserve(string title, string customer)
+        {
+            if (String.IsNullOrEmpty(customer))
+                throw new ArgumentNullException(nameof(customer));
+
+            var state = GetState(title);
+
+            if (state != null && state == BookState.Available)
+            {
+                _books[title].State = BookState.NotAvailable;
+                _books[title].Customer = customer;
+                return true;
+            }
+
+            return false;
+        }
+
         public void Release(string title, string customer, Action <string> release)
         {
             if (String.IsNullOrEmpty(title))
