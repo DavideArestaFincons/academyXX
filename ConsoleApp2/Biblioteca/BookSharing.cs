@@ -22,6 +22,15 @@ namespace ConsoleApp2.Biblioteca
                 _books.Add(libro.Title, libro);
         }
 
+        public void BooksOrderedByTitle()
+        {
+            var orderedBooks = _books.Values.OrderBy( x => x.Title);
+            Console.WriteLine("i libro in ordine alfabetico sono: ");
+            foreach (Libro book in orderedBooks) 
+            {
+                Console.WriteLine(book.Title);
+            }
+        }
         public void ShowReserved() 
         {
             var reserved = 0;
@@ -66,6 +75,23 @@ namespace ConsoleApp2.Biblioteca
                 _books[title].State = BookState.NotAvailable;
                 _books[title].Customer = customer;
                 reserve(title);
+                return true;
+            }
+
+            return false;
+        }
+
+        public bool InteractiveReserve(string title, string customer)
+        {
+            if (String.IsNullOrEmpty(customer))
+                throw new ArgumentNullException(nameof(customer));
+
+            var state = GetState(title);
+
+            if (state != null && state == BookState.Available)
+            {
+                _books[title].State = BookState.NotAvailable;
+                _books[title].Customer = customer;
                 return true;
             }
 

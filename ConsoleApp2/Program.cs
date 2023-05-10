@@ -25,6 +25,8 @@ namespace ConsoleApp2
             biblio.Fill(new Libro("1984", BookState.Available, "Salvo", 5));
             biblio.Fill(new Libro("Le barzellette di Cassano", BookState.Available, "Angy", 2));
             biblio.Fill(new Libro("Ragazze elettriche", BookState.Available, "Laura", 4));
+   
+
 
             biblio.ShowAmount();
 
@@ -56,6 +58,14 @@ namespace ConsoleApp2
         public static void Menu(BookSharing biblio)
         {
             var choice = 0;
+            var books = new BookSharing();
+
+            books.Fill(new Libro("Il Conte di Montecristo", BookState.NotAvailable, "Salvo", 4));
+            books.Fill(new Libro("Io Uccido", BookState.NotAvailable, "Noemi", 3));
+            books.Fill(new Libro("La svastica sul sole", BookState.Available, "Salvo", 5));
+            books.Fill(new Libro("1984", BookState.Available, "Salvo", 5));
+            books.Fill(new Libro("Le barzellette di Cassano", BookState.Available, "Angy", 2));
+            books.Fill(new Libro("Ragazze elettriche", BookState.Available, "Laura", 4));
 
             do
             {
@@ -67,20 +77,46 @@ namespace ConsoleApp2
 
                 Console.WriteLine("Inserisci un'opzione numerica: ");
                 choice = Console.ReadKey().KeyChar;
+
                 switch (choice)
                 {
-                    case ('4'):
-                        Console.WriteLine("Inserisci nome del libro da restituire:");
-                        var book = Console.ReadLine();
-                        Console.WriteLine("Inserisci il nome del customer:");
-                        var customer = Console.ReadLine();
-                        biblio.Release(book, customer);
+                    case '1':
+                        biblio.BooksOrderedByTitle();
                         break;
-
+                    case '2':
+                        break;
+                    case '3':
+                        ReserveBook(books);
+                        break;
+                    case '4':
+                        ReleaseBook(biblio);
+                        break;
                 }
             }
             while (choice != '5');
 
+        }
+
+        private static void ReleaseBook(BookSharing biblio)
+        {
+            Console.WriteLine("Inserisci nome del libro da restituire:");
+            var book = Console.ReadLine();
+            Console.WriteLine("Inserisci il nome del customer:");
+            var customer = Console.ReadLine();
+            biblio.Release(book, customer);
+        }
+
+        public static void ReserveBook(BookSharing bookSharing)
+        {
+            Console.WriteLine("\nInserisci il titolo del libro che vuoi prenotare:");
+            var bookTitle = Console.ReadLine();
+            Console.WriteLine("\nInserisci il tuo nome:");
+            var customerName = Console.ReadLine();
+            var result = bookSharing.InteractiveReserve(bookTitle, customerName);
+            if (result == true)
+                Console.WriteLine("La prenotazione è stata effettuata con successo!");
+            else
+                Console.WriteLine("La prenotazione è fallita. Riprova!");
         }
 
     }
