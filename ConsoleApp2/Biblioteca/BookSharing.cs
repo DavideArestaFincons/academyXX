@@ -22,6 +22,19 @@ namespace ConsoleApp2.Biblioteca
                 _books.Add(libro.Title, libro);
         }
 
+        public void ShowReserved() 
+        {
+            var reserved = 0;
+            foreach (Libro libro in _books.Values) 
+            {
+                if(libro.State == BookState.NotAvailable)
+                {
+                    reserved++;
+                }
+            }
+            Console.WriteLine($"I libri prenotati sono : {reserved}");
+        }
+
         public void ShowAmount()
         {
             Console.WriteLine($"Il numero di libri aggiunto è {_books.Count } "); 

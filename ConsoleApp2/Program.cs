@@ -50,8 +50,8 @@ namespace ConsoleApp2
             var biblio = new BookSharing();
             biblio.ChangeNumOfReviews += Biblio_ChangeReviewStatus;
 
-            biblio.Fill(new Libro("Il Conte di Montecristo", BookState.Available, "Salvo", 4));
-            biblio.Fill(new Libro("Io Uccido", BookState.Available, "Noemi", 3));
+            biblio.Fill(new Libro("Il Conte di Montecristo", BookState.NotAvailable, "Salvo", 4));
+            biblio.Fill(new Libro("Io Uccido", BookState.NotAvailable, "Noemi", 3));
             biblio.Fill(new Libro("La svastica sul sole", BookState.Available, "Salvo", 5));
             biblio.Fill(new Libro("1984", BookState.Available, "Salvo", 5));
             biblio.Fill(new Libro("Le barzellette di Cassano", BookState.Available, "Angy", 2));
@@ -71,6 +71,8 @@ namespace ConsoleApp2
             });
 
             biblio.AddTodayDateToBooks();
+
+            biblio.ShowReserved();
         }
 
 
