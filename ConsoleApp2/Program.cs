@@ -15,7 +15,7 @@ namespace ConsoleApp2
     {
         static void Main(string[] args)
         {
-
+            
             var biblio = new BookSharing();
             biblio.ChangeNumOfReviews += Biblio_ChangeReviewStatus;
 
@@ -28,7 +28,7 @@ namespace ConsoleApp2
    
 
 
-            biblio.ShowAmount();
+            //biblio.ShowAmount();
 
             biblio.Reserve("1984", "George Orwell", (title) => {
                 Console.WriteLine($"è stato riservato il libro {title}");
@@ -54,7 +54,6 @@ namespace ConsoleApp2
 
             Console.Beep();
         }
-
         public static void Menu(BookSharing biblio)
         {
             var choice = 0;
@@ -69,13 +68,13 @@ namespace ConsoleApp2
 
             do
             {
-                Console.WriteLine("1. Restituisci i libri in ordine alfabetico");
+                Console.WriteLine("\n\n1. Restituisci i libri in ordine alfabetico");
                 Console.WriteLine("2. Inserisci un nuovo libro");
                 Console.WriteLine("3. Prenota un nuovo libro");
                 Console.WriteLine("4. Restituisci il libro");
                 Console.WriteLine("5. Esci");
 
-                Console.WriteLine("Inserisci un'opzione numerica: ");
+                Console.WriteLine("\nInserisci un'opzione numerica: ");
                 choice = Console.ReadKey().KeyChar;
 
                 switch (choice)
@@ -83,7 +82,8 @@ namespace ConsoleApp2
                     case '1':
                         biblio.BooksOrderedByTitle();
                         break;
-                    case '2':
+                    case '2': 
+                        InsertTitle(biblio);
                         break;
                     case '3':
                         ReserveBook(books);
@@ -94,6 +94,14 @@ namespace ConsoleApp2
                 }
             }
             while (choice != '5');
+        }
+        public static void InsertTitle(BookSharing biblioInsert)
+        {
+            string titoloLibro;
+            Console.WriteLine("\n\nInserisci il titolo del libro: ");
+            titoloLibro = Console.ReadLine();
+
+            biblioInsert.Fill(new Libro(titoloLibro, BookState.Available));
 
         }
 
@@ -118,6 +126,5 @@ namespace ConsoleApp2
             else
                 Console.WriteLine("La prenotazione è fallita. Riprova!");
         }
-
     }
 }
