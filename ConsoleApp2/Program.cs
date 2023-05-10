@@ -45,6 +45,8 @@ namespace ConsoleApp2
             //var t = new ClassWorkspace();
             //t.OnRun("ss");
 
+            var numero = 3;
+
             var biblio = new BookSharing();
             biblio.ChangeNumOfReviews += Biblio_ChangeReviewStatus;
 
