@@ -25,6 +25,8 @@ namespace ConsoleApp2
             biblio.Fill(new Libro("1984", BookState.Available, "Salvo", 5));
             biblio.Fill(new Libro("Le barzellette di Cassano", BookState.Available, "Angy", 2));
             biblio.Fill(new Libro("Ragazze elettriche", BookState.Available, "Laura", 4));
+   
+
 
             biblio.ShowAmount();
 
@@ -40,7 +42,7 @@ namespace ConsoleApp2
 
             biblio.ShowReserved();
 
-            Menu();
+            Menu(biblio);
 
         }
 
@@ -53,7 +55,7 @@ namespace ConsoleApp2
             Console.Beep();
         }
 
-        public static void Menu()
+        public static void Menu(BookSharing biblio)
         {
             var choice = 0;
 
@@ -67,6 +69,12 @@ namespace ConsoleApp2
 
                 Console.WriteLine("Inserisci un'opzione numerica: ");
                 choice = Console.ReadKey().KeyChar;
+                switch(choice = 1)
+                {
+                    case 1:
+                        biblio.BooksOrderedByTitle();
+                        break;
+                }
             }
             while (choice != '5');
 
