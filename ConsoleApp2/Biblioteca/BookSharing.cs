@@ -22,6 +22,15 @@ namespace ConsoleApp2.Biblioteca
                 _books.Add(libro.Title, libro);
         }
 
+        public void BooksOrderedByTitle()
+        {
+            var orderedBooks = _books.Values.OrderBy( x => x.Title);
+            Console.WriteLine("i libro in ordine alfabetico sono: ");
+            foreach (Libro book in orderedBooks) 
+            {
+                Console.WriteLine(book.Title);
+            }
+        }
         public void ShowReserved() 
         {
             var reserved = 0;
