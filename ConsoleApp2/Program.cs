@@ -40,7 +40,7 @@ namespace ConsoleApp2
 
             biblio.ShowReserved();
 
-            Menu();
+            Menu(biblio);
 
         }
 
@@ -53,7 +53,7 @@ namespace ConsoleApp2
             Console.Beep();
         }
 
-        public static void Menu()
+        public static void Menu(BookSharing biblio)
         {
             var choice = 0;
 
@@ -67,6 +67,17 @@ namespace ConsoleApp2
 
                 Console.WriteLine("Inserisci un'opzione numerica: ");
                 choice = Console.ReadKey().KeyChar;
+                switch (choice)
+                {
+                    case ('4'):
+                        Console.WriteLine("Inserisci nome del libro da restituire:");
+                        var book = Console.ReadLine();
+                        Console.WriteLine("Inserisci il nome del customer:");
+                        var customer = Console.ReadLine();
+                        biblio.Release(book, customer);
+                        break;
+
+                }
             }
             while (choice != '5');
 

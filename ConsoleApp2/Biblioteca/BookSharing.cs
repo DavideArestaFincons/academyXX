@@ -90,7 +90,24 @@ namespace ConsoleApp2.Biblioteca
                 }
             }
         }
-                
+        public void Release(string title, string customer)
+        {
+            if (String.IsNullOrEmpty(title))
+                throw new ArgumentNullException(nameof(title));
+
+            if (String.IsNullOrEmpty(customer))
+                throw new ArgumentNullException(nameof(customer));
+
+            if (_books.ContainsKey(title))
+            {
+                if (_books[title].Customer == customer)
+                {
+                    _books[title].State = BookState.Available;
+                    _books[title].Customer = null;
+                   
+                }
+            }
+        }
         public void AddTodayDateToBooks()
         {
             var bookTitle = _books.Keys.ToList();
